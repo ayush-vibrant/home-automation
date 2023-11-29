@@ -1,9 +1,6 @@
 package com.example.astuto.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -12,6 +9,10 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(indexes = {
+        @Index(name = "idx_deviceId", columnList = "deviceId"),
+        @Index(name = "idx_timestamp", columnList = "timestamp")
+})
 public class Metric {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
