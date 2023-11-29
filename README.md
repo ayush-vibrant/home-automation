@@ -27,13 +27,7 @@ curl -X POST http://localhost:8080/metrics \
 
 #### Request
 ```bash
-curl -X GET http://localhost:8080/metrics \
-     -H 'Content-Type: application/json' \
-     -d '{
-           "deviceId": "device123",
-           "from": 1633036800,
-           "to": 1633036800
-         }'
+curl -X GET 'http://localhost:8080/metrics?deviceId=device123&startTimestamp=1633036800&endTimestamp=1633123200'
 ```
 
 #### Response
