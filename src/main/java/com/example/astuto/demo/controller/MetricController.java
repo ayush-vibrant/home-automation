@@ -2,7 +2,6 @@ package com.example.astuto.demo.controller;
 
 import com.example.astuto.demo.model.Metric;
 import com.example.astuto.demo.repository.MetricRepository;
-import com.example.astuto.demo.request.MetricsRequest;
 import com.example.astuto.demo.service.MetricService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,8 +26,10 @@ public class MetricController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Metric>> getMetrics(@RequestBody MetricsRequest request) {
-        List<Metric> metrics = metricService.getDownsampledMetrics(request.getDeviceId(), request.getFrom(), request.getTo());
+    public ResponseEntity<List<Metric>> getMetrics(@RequestParam String deviceId,
+                                                   @RequestParam Long startTimestamp,
+                                                   @RequestParam Long endTimestamp) {
+        List<Metric> metrics = metricService.getDownsampledMetrics(deviceId, startTimestamp, endTimestamp);
         return ResponseEntity.ok(metrics);
     }
 
